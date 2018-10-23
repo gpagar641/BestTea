@@ -102,9 +102,9 @@
 		           
 		        </ul>
 		     </div><!-- /.navbar-collapse -->
-			<div class="clearfix">
-       
-     </div>
+		
+			<div class="clearfix"></div>
+		
 	  
 		    <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">

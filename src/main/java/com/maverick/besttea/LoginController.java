@@ -15,7 +15,7 @@ public class LoginController {
 	public String showLoginPage(Locale locale, Model model) {
 		
 		
-		return "login";
+		return "sampleForm";
 	}
 	
 }

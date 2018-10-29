@@ -25,7 +25,7 @@ public class CustomerTableDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="table_id", length=11)
 	private int tableId;
-	
+	   
 	@Column(name="table_name",length=200)
 	private String tableName;
 	

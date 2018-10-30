@@ -50,7 +50,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Add New Item
+                            Add Item Price
                             <span class="tools pull-right">
                                 <a class="fa fa-chevron-down" href="javascript:;"></a>
                                <!--  <a class="fa fa-cog" href="javascript:;"></a>
@@ -59,29 +59,29 @@
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal " action="addItemProcess" id="signupForm" method="get" action="" novalidate="novalidate">
+                                <form class="cmxform form-horizontal " action="addItemPrice" id="signupForm" method="get" novalidate="novalidate">
                                   
                             
                             <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Select Category</label>
+                                        <label for="firstname" class="control-label col-lg-3">Select Item</label>
                                         <div class="col-lg-6">
-                                            <select class="form-control m-bot15" id="catId" name="catId">
-                                <c:forEach var="categoryDetailsList" items="${categoryDetailsList}">
-                                <option value="${categoryDetailsList.categoryId}">${categoryDetailsList.categoryName}</option>
+                                            <select class="form-control m-bot15" id="itemId" name="itemId">
+                                <c:forEach var="itemDetailsList" items="${itemDetailsList}">
+                                <option value="${itemDetailsList.itemId}">${itemDetailsList.itemName}</option>
                                 </c:forEach>
                             </select>
                                         </div>
                                     </div>
                                     
                                     <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Item Name</label>
+                                        <label for="firstname" class="control-label col-lg-3">Item Price</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="itemName" name="itemName" type="text" placeholder="Item Name"> 
+                                            <input class=" form-control" id="itemPrice" name="itemPrice" type="number" placeholder="Item Name"> 
                                            
                                         </div>
                                     </div>
                                     
-                                     <div class="form-group ">
+                                     <%-- <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-3">Select of Unit Measure</label>
                                         <div class="col-lg-6">
                                             <select class="form-control m-bot15" id="uom" name="uom">
@@ -90,12 +90,12 @@
                                 </c:forEach>
                             </select>
                                         </div>
-                                    </div>
+                                    </div> --%>
                                     
                                     <div class="form-group ">
                                         <label for="lastname" class="control-label col-lg-3">Description</label>
                                         <div class="col-lg-6">
-                                            <textarea rows="2" class=" " id="itemDesc" name="itemDesc" form-control" placeholder="Item Description"></textarea>
+                                            <textarea rows="2" class=" " id="itemPriceDesc" name="itemPriceDesc" form-control" placeholder="Item Description"></textarea>
                                             
                                         </div>
                                     </div>

@@ -118,5 +118,24 @@ public class ItemController {
 		    
 	}
 	
+	@RequestMapping(value="/addItemQuantity", method=RequestMethod.GET)
+
+	public String addItemQuantity(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("items/add_item_quantity");
+		
+		ItemPriceDetails itemPriceDetails=new ItemPriceDetails();
+		
+		itemPriceDetails.setItemId(Integer.parseInt(request.getParameter("itemId")));
+		itemPriceDetails.setItemPrice(Float.parseFloat(request.getParameter("itemQuantity")));
+		itemPriceDetails.setItem_desc(request.getParameter("itemQuantityDesc"));
+		itemPriceDetails.setDelStatus(0);
+		
+		itemPriceDetails=itemPriceDetailsService.insertItemPrice(itemPriceDetails);
+		
+		return "redirect:/showItemsPrice";
+		    
+	}
+	
 	
 }

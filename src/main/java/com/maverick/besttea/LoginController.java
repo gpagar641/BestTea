@@ -12,10 +12,25 @@ public class LoginController {
 
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String showLoginPage(Locale locale, Model model) {
+	public String showBasicPage(Locale locale, Model model) {
 		
 		
 		return "sampleForm";
 	}
+	
+	@RequestMapping(value = "/showLoginPage", method = RequestMethod.GET)
+	public String showLoginPage(Locale locale, Model model) {
+		
+		
+		return "login/login";
+	}
+	
+	@RequestMapping(value = "/showRagistrationPage", method = RequestMethod.GET)
+	public String showRagistrationPage(Locale locale, Model model) {
+		
+		
+		return "login/registration";
+	}
+	
 	
 }

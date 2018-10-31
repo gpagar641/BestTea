@@ -18,7 +18,6 @@ import com.maverick.besttea.model.ItemQuantityDetails;
 import com.maverick.besttea.model.UnitDetails;
 import com.maverick.besttea.service.CategoryDetailsService;
 import com.maverick.besttea.service.ItemDetailsService;
-import com.maverick.besttea.service.ItemPriceDetailsService;
 import com.maverick.besttea.service.ItemQuantityDetailsService;
 import com.maverick.besttea.service.UnitDetailsService;
 
@@ -34,9 +33,7 @@ public class ItemController {
 	
 	@Autowired
 	UnitDetailsService unitDetailsService;
-	
-	@Autowired
-	ItemPriceDetailsService itemPriceDetailsService;
+ 
 	
 	@Autowired
 	ItemQuantityDetailsService itemQuantityDetailsService;
@@ -117,7 +114,7 @@ public class ItemController {
 		itemPriceDetails.setItem_desc(request.getParameter("itemPriceDesc"));
 		itemPriceDetails.setDelStatus(0);
 		
-		itemPriceDetails=itemPriceDetailsService.insertItemPrice(itemPriceDetails);
+		itemPriceDetails=itemDetailsService.insertItemPrice(itemPriceDetails);
 		
 		return "redirect:/showItemsPrice";
 		    

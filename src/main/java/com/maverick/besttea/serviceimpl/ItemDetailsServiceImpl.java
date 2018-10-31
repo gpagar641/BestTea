@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.maverick.besttea.model.Info;
 import com.maverick.besttea.model.ItemDetails;
+import com.maverick.besttea.model.ItemPriceDetails;
 import com.maverick.besttea.repository.ItemDetailsRepository;
+import com.maverick.besttea.repository.ItemPriceDetailsRepository;
 import com.maverick.besttea.service.ItemDetailsService;
 
 @Service
@@ -16,6 +18,9 @@ public class ItemDetailsServiceImpl implements ItemDetailsService{
 
 	@Autowired
 	ItemDetailsRepository itemDetailsRepository;
+	
+	@Autowired
+	ItemPriceDetailsRepository itemPriceDetailsRepository;
 	
 	@Override
 	public ItemDetails insertItem(ItemDetails itemDetails) {
@@ -50,6 +55,37 @@ public class ItemDetailsServiceImpl implements ItemDetailsService{
 		}
 		
 		return itemDetailsList;
+	}
+
+	
+	@Override
+	public ItemPriceDetails insertItemPrice(ItemPriceDetails itemPriceDetails) {
+
+		Info info=new Info();
+		try {
+			itemPriceDetails=itemPriceDetailsRepository.save(itemPriceDetails);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(itemPriceDetails!=null) {
+			
+			info.setMessage("Price Save Successfully");
+		}else {
+			info.setError(true);
+		}		
+		return itemPriceDetails;
+	}
+
+	@Override
+	public ItemPriceDetails getItemPrice(int itemId) {
+		ItemPriceDetails itemPriceDetails=new ItemPriceDetails();
+		try {
+			itemPriceDetails=itemPriceDetailsRepository.findByItemIdAndDelStatus(itemId, 0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return itemPriceDetails;
 	}
 
 }

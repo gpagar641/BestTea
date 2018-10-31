@@ -1,6 +1,7 @@
 package com.maverick.besttea.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -45,8 +47,8 @@ public class CustomerTableDetails {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedDate;
 
-	
-	
+	@Transient
+	private SaleBillHeader saleBillHeader;
 	
 	public int getDelStatus() {
 		return delStatus;
@@ -96,12 +98,23 @@ public class CustomerTableDetails {
 		this.tableCapacity = tableCapacity;
 	}
 
+	public SaleBillHeader getSaleBillHeader() {
+		return saleBillHeader;
+	}
+
+	public void setSaleBillHeader(SaleBillHeader saleBillHeader) {
+		this.saleBillHeader = saleBillHeader;
+	}
+
 	@Override
 	public String toString() {
 		return "CustomerTableDetails [tableId=" + tableId + ", tableName=" + tableName + ", tableCapacity="
 				+ tableCapacity + ", delStatus=" + delStatus + ", createDate=" + createDate + ", modifiedDate="
-				+ modifiedDate + "]";
+				+ modifiedDate + ", saleBillHeader=" + saleBillHeader + "]";
 	}
+
+	 
+ 
 
 	
 	

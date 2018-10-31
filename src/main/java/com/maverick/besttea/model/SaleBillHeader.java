@@ -1,6 +1,7 @@
 package com.maverick.besttea.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -44,6 +46,9 @@ public class SaleBillHeader {
 	
 	@Column(name="payable_amount")
 	private float payableAmount;
+	
+	@Transient
+	private List<SaleBillDetails> saleBillDetailsList;
 
 	public int getSaleBillId() {
 		return saleBillId;
@@ -101,13 +106,21 @@ public class SaleBillHeader {
 		this.payableAmount = payableAmount;
 	}
 
+	public List<SaleBillDetails> getSaleBillDetailsList() {
+		return saleBillDetailsList;
+	}
+
+	public void setSaleBillDetailsList(List<SaleBillDetails> saleBillDetailsList) {
+		this.saleBillDetailsList = saleBillDetailsList;
+	}
+
 	@Override
 	public String toString() {
 		return "SaleBillHeader [saleBillId=" + saleBillId + ", createDate=" + createDate + ", totalAmount="
 				+ totalAmount + ", customerName=" + customerName + ", custMobileNo=" + custMobileNo + ", discount="
-				+ discount + ", payableAmount=" + payableAmount + "]";
+				+ discount + ", payableAmount=" + payableAmount + ", saleBillDetailsList=" + saleBillDetailsList + "]";
 	}
-	
+ 
 	
 	
 }

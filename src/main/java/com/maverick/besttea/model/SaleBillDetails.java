@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -37,6 +38,9 @@ public class SaleBillDetails {
 	
 	@Column(name="total_amount", length=11)
 	private float totalAmount;
+	
+	@Transient
+	private String itemName;
 
 	public int getSaleBillDetailsId() {
 		return saleBillDetailsId;
@@ -94,12 +98,21 @@ public class SaleBillDetails {
 		this.totalAmount = totalAmount;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
 	@Override
 	public String toString() {
 		return "SaleBillDetails [saleBillDetailsId=" + saleBillDetailsId + ", saleBillNumber=" + saleBillNumber
 				+ ", itemId=" + itemId + ", itemPrice=" + itemPrice + ", quantity=" + quantity + ", type=" + type
-				+ ", totalAmount=" + totalAmount + "]";
+				+ ", totalAmount=" + totalAmount + ", itemName=" + itemName + "]";
 	}
 
+	 
 	
 }

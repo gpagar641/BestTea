@@ -14,10 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.maverick.besttea.model.CategoryDetails;
 import com.maverick.besttea.model.ItemDetails;
 import com.maverick.besttea.model.ItemPriceDetails;
+import com.maverick.besttea.model.ItemQuantityDetails;
 import com.maverick.besttea.model.UnitDetails;
 import com.maverick.besttea.service.CategoryDetailsService;
 import com.maverick.besttea.service.ItemDetailsService;
 import com.maverick.besttea.service.ItemPriceDetailsService;
+import com.maverick.besttea.service.ItemQuantityDetailsService;
 import com.maverick.besttea.service.UnitDetailsService;
 
 @Controller
@@ -35,6 +37,9 @@ public class ItemController {
 	
 	@Autowired
 	ItemPriceDetailsService itemPriceDetailsService;
+	
+	@Autowired
+	ItemQuantityDetailsService itemQuantityDetailsService;
 	
 	@RequestMapping(value="/showItems", method=RequestMethod.GET)
 
@@ -124,14 +129,14 @@ public class ItemController {
 	{
 		ModelAndView model=new ModelAndView("items/add_item_quantity");
 		
-		ItemPriceDetails itemPriceDetails=new ItemPriceDetails();
+		ItemQuantityDetails itemQuantityDetails=new ItemQuantityDetails();
 		
-		itemPriceDetails.setItemId(Integer.parseInt(request.getParameter("itemId")));
-		itemPriceDetails.setItemPrice(Float.parseFloat(request.getParameter("itemQuantity")));
-		itemPriceDetails.setItem_desc(request.getParameter("itemQuantityDesc"));
-		itemPriceDetails.setDelStatus(0);
+		itemQuantityDetails.setItemId(Integer.parseInt(request.getParameter("itemId")));
+		itemQuantityDetails.setItemQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
+		itemQuantityDetails.setItem_desc(request.getParameter("itemQuantityDesc"));
+		itemQuantityDetails.setDelStatus(0);
 		
-		itemPriceDetails=itemPriceDetailsService.insertItemPrice(itemPriceDetails);
+		itemQuantityDetails=itemQuantityDetailsService.insertItemQuantity(itemQuantityDetails);
 		
 		return "redirect:/showItemsPrice";
 		    

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.maverick.besttea.model.CategoryDetails;
+import com.maverick.besttea.model.Info;
 import com.maverick.besttea.model.ItemDetails;
 import com.maverick.besttea.model.ItemPriceDetails;
 import com.maverick.besttea.model.ItemQuantityDetails;
@@ -34,6 +35,7 @@ public class ItemController {
 	@Autowired
 	UnitDetailsService unitDetailsService;
  
+	String message;
 	
 	@Autowired
 	ItemQuantityDetailsService itemQuantityDetailsService;
@@ -64,6 +66,7 @@ public class ItemController {
 		 List<UnitDetails> unitDetailsList=unitDetailsService.getUnitDetailsList();
 		 model.addObject("unitDetailsList",unitDetailsList);
 		model.addObject("categoryDetailsList",categoryDetailsList);
+		model.addObject("message",message);
 		return model;
 		
 	}	
@@ -73,7 +76,7 @@ public class ItemController {
 	public String addItemProcess(HttpServletRequest request)   
 	{
 		ModelAndView model=new ModelAndView("items/add_new_items");
-		
+		Info info=new Info();
 		ItemDetails itemDetails=new ItemDetails();
 		itemDetails.setCategoryId(Integer.parseInt(request.getParameter("catId")));
 		itemDetails.setItemName(request.getParameter("itemName"));
@@ -81,7 +84,12 @@ public class ItemController {
 		itemDetails.setUnitId(Integer.parseInt(request.getParameter("uom")));
 		itemDetails.setDelStatus(0);
 		itemDetails=itemDetailsService.insertItem(itemDetails);
-		
+		if(itemDetails!=null) {
+			message="Information Save Successfully";
+			
+		}else {
+			message="Information Not Save";
+		}
 		return "redirect:/showAddItems";
 		    
 	}
@@ -95,7 +103,7 @@ public class ItemController {
 		List<ItemDetails> itemDetailsList=new ArrayList<ItemDetails>();
 		
 		itemDetailsList=itemDetailsService.getItemsDetails();
-		System.out.println(itemDetailsList.toString());
+		
 		model.addObject("itemDetailsList",itemDetailsList);
 		return model;
 		
@@ -120,6 +128,21 @@ public class ItemController {
 		    
 	}
 	
+	@RequestMapping(value="/	", method=RequestMethod.GET)
+
+	public ModelAndView showItemQuantity(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("items/add_item_quantity");
+		
+		List<ItemDetails> itemDetailsList=new ArrayList<ItemDetails>();
+		
+		itemDetailsList=itemDetailsService.getItemsDetails();
+		
+		model.addObject("itemDetailsList",itemDetailsList);
+		return model;
+		
+	}
+	
 	@RequestMapping(value="/addItemQuantity", method=RequestMethod.GET)
 
 	public String addItemQuantity(HttpServletRequest request)   
@@ -135,7 +158,7 @@ public class ItemController {
 		
 		itemQuantityDetails=itemQuantityDetailsService.insertItemQuantity(itemQuantityDetails);
 		
-		return "redirect:/showItemsPrice";
+		return "redirect:/showItemQuantity";
 		    
 	}
 	

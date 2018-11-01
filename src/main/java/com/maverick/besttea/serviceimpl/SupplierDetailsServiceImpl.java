@@ -94,7 +94,7 @@ public class SupplierDetailsServiceImpl implements SupplierDetailsService{
 		System.out.println(supplierDetailsList.toString());
 		return supplierDetailsList;
 	}
-
+   
 	@Override
 	public List<SupplierMaterialDetails> insertSupplierMaterial(List<SupplierMaterialDetails> supplierMaterialList) {
 	 

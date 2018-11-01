@@ -21,6 +21,17 @@
 <link href="${pageContext.request.contextPath}/resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery2.0.3.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/resources/css/fSelect.css" rel="stylesheet">
+ 
+<script src="${pageContext.request.contextPath}/resources/js/fSelect.js"></script>
+<script>
+(function($) {
+    $(function() {
+        $('.test').fSelect();
+    });
+})(jQuery);
+</script>
 </head>
 
  
@@ -65,7 +76,7 @@
                             <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-3">Select Item</label>
                                         <div class="col-lg-6">
-                                            <select class="form-control m-bot15" id="itemId" name="itemId">
+                                            <select class="test" id="itemId" name="itemId">
                                 <c:forEach var="itemDetailsList" items="${itemDetailsList}">
                                 <option value="${itemDetailsList.itemId}">${itemDetailsList.itemName}</option>
                                 </c:forEach>

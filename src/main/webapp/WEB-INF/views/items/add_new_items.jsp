@@ -21,6 +21,17 @@
 <link href="${pageContext.request.contextPath}/resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery2.0.3.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/resources/css/fSelect.css" rel="stylesheet">
+ 
+<script src="${pageContext.request.contextPath}/resources/js/fSelect.js"></script>
+<script>
+(function($) {
+    $(function() {
+        $('.test').fSelect();
+    });
+})(jQuery);
+</script>
 </head>
 
  
@@ -57,15 +68,29 @@
                                 <a class="fa fa-times" href="javascript:;"></a> -->
                              </span>
                         </header>
+                        <p style="text-align: center; color: green" id="messageAnimation">${message}</p>
                         <div class="panel-body">
                             <div class="form">
                                 <form class="cmxform form-horizontal " action="addItemProcess" id="signupForm" method="get" action="" novalidate="novalidate">
                                   
-                            
+                            							<!--  <select class="test" multiple="multiple">
+        <optgroup label="Group A">
+            <option value="1">Option 1</option>
+            <option value="2" selected>Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4" disabled>Option 4</option>
+            <option value="5">Option 5</option>
+        </optgroup>
+        <optgroup label="Group B">
+            <option value="6" selected>Option 6</option>
+            <option value="7">Option 7</option>
+            <option value="8">Option 8</option>
+        </optgroup>
+    </select> -->
                             <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-3">Select Category</label>
                                         <div class="col-lg-6">
-                                            <select class="form-control m-bot15" id="catId" name="catId">
+                                            <select class="test" id="catId" name="catId">
                                 <c:forEach var="categoryDetailsList" items="${categoryDetailsList}">
                                 <option value="${categoryDetailsList.categoryId}">${categoryDetailsList.categoryName}</option>
                                 </c:forEach>
@@ -84,7 +109,7 @@
                                      <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-3">Select of Unit Measure</label>
                                         <div class="col-lg-6">
-                                            <select class="form-control m-bot15" id="uom" name="uom">
+                                            <select class="test" id="uom" name="uom">
                                <c:forEach var="unitDetailsList" items="${unitDetailsList}">
                                 <option value="${unitDetailsList.unitId}">${unitDetailsList.unitName}</option>
                                 </c:forEach>
@@ -133,5 +158,11 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.scrollTo.js"></script>
+
+ <script>
+                        setTimeout(function() {
+    $('#messageAnimation').fadeOut('slow');
+}, 5000);
+                        </script>
 </body>
 </html>

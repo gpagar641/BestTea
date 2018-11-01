@@ -21,17 +21,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery2.0.3.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/fSelect.css" rel="stylesheet">
- 
-<script src="${pageContext.request.contextPath}/resources/js/fSelect.js"></script>
-<script>
-(function($) {
-    $(function() {
-        $('.test').fSelect();
-    });
-})(jQuery);
-</script>
-
 </head>
 
  
@@ -61,60 +50,72 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Add Item Price
+                            Add Supplier Details
                             <span class="tools pull-right">
-                                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                                <!-- <a class="fa fa-chevron-down" href="javascript:;"></a> -->
                                <!--  <a class="fa fa-cog" href="javascript:;"></a>
                                 <a class="fa fa-times" href="javascript:;"></a> -->
                              </span>
                         </header>
+                        <p style="text-align: center; color: green" id="messageAnimation">${message}</p>
+         
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal " action="addItemQuantity" id="signupForm" method="get" novalidate="novalidate">
+                                <form class="cmxform form-horizontal " action="insertSupplierProcess" id="signupForm" method="get" action="" novalidate="novalidate">
                                   
                             
                             <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Select Quantity</label>
-                                        <div class="col-lg-6">
-                                            <select class="test" id="itemId" name="itemId">
-                                <c:forEach var="itemDetailsList" items="${itemDetailsList}">
-                                <option value="${itemDetailsList.itemId}">${itemDetailsList.itemName}</option>
-                                </c:forEach>
-                            </select>
+                                        <label for="firstname" class="control-label col-lg-3">Supplier Name</label>
+                                        <div class="col-lg-5">
+                                              <input class=" form-control" id="supplierName" name="supplierName" type="text" placeholder="Supplier Name">
                                         </div>
                                     </div>
-                                       
+                                    
                                     <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Item Quantity</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="itemQuantity" name="itemQuantity" type="number" placeholder="Item Name"> 
+                                        <label for="firstname" class="control-label col-lg-3">Company Name</label>
+                                        <div class="col-lg-5">
+                                            <input class=" form-control" id="companyName" name="companyName" type="text" placeholder="Company Name"> 
                                            
                                         </div>
                                     </div>
                                     
-                                     <%-- <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Select of Unit Measure</label>
-                                        <div class="col-lg-6">
-                                            <select class="form-control m-bot15" id="uom" name="uom">
-                               <c:forEach var="unitDetailsList" items="${unitDetailsList}">
-                                <option value="${unitDetailsList.unitId}">${unitDetailsList.unitName}</option>
-                                </c:forEach>
-                            </select>
-                                        </div>
-                                    </div> --%>
-                                    
-                                    <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-3">Description</label>
-                                        <div class="col-lg-6">
-                                            <textarea rows="2" class=" " id="itemQuantityDesc" name="itemQuantityDesc" form-control" placeholder="Item Description"></textarea>
-                                            
+                                     <div class="form-group ">
+                                        <label for="firstname" class="control-label col-lg-3">Mobile Number</label>
+                                        <div class="col-lg-3">
+                                            <input class=" form-control" id="mobileNumber" name="mobileNumber" type="text" placeholder="Mobile Number">
                                         </div>
                                     </div>
+                                    
+                                   
+                                    
+                                     <div class="form-group ">
+                                        <label for="firstname" class="control-label col-lg-3">Email</label>
+                                        <div class="col-lg-3">
+                                            <input class=" form-control" id="email" name="email" type="text" placeholder="Email"> 
+                                   
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group ">
+                                        <label for="firstname" class="control-label col-lg-3">GST Number</label>
+                                        <div class="col-lg-3">
+                                            <input class=" form-control" id="gstNo" name="gstNo" type="text" placeholder="GST Number"> 
+                                   
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-3">Address</label>
+                                        <div class="col-lg-6">
+                                            <textarea rows="2" class=" " id="address" name="address" form-control" placeholder="Supplier Address"></textarea>
+                                            
+                                        </div>
+                                    </div>	
                                      
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Save</button>
-                                            <button class="btn btn-default" type="button">Cancel</button>
+                                            <button class="btn btn-default" type="button">Clear</button>
                                         </div>
                                     </div>
                                 </form>
@@ -126,7 +127,13 @@
             <!-- page end-->
         </div>
 </section>
- 
+ <!-- footer -->
+		  <div class="footer">
+			<div class="wthree-copyright">
+			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			</div>
+		  </div>
+  <!-- / footer -->
 </section>
 
 <!--main content end-->
@@ -138,5 +145,11 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.scrollTo.js"></script>
+
+            <script>
+                        setTimeout(function() {
+    $('#messageAnimation').fadeOut('slow');
+}, 5000);
+                        </script>
 </body>
 </html>

@@ -21,17 +21,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery2.0.3.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/fSelect.css" rel="stylesheet">
- 
-<script src="${pageContext.request.contextPath}/resources/js/fSelect.js"></script>
-<script>
-(function($) {
-    $(function() {
-        $('.test').fSelect();
-    });
-})(jQuery);
-</script>
-
 </head>
 
  
@@ -61,7 +50,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Add Item Price
+                            Add Raw Material
                             <span class="tools pull-right">
                                 <a class="fa fa-chevron-down" href="javascript:;"></a>
                                <!--  <a class="fa fa-cog" href="javascript:;"></a>
@@ -70,29 +59,17 @@
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal " action="addItemQuantity" id="signupForm" method="get" novalidate="novalidate">
+                                <form class="cmxform form-horizontal " action="insertRawMaterialProcess" id="signupForm" method="get" novalidate="novalidate">
                                   
                             
                             <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Select Quantity</label>
+                                        <label for="firstname" class="control-label col-lg-3">Raw Material Name</label>
                                         <div class="col-lg-6">
-                                            <select class="test" id="itemId" name="itemId">
-                                <c:forEach var="itemDetailsList" items="${itemDetailsList}">
-                                <option value="${itemDetailsList.itemId}">${itemDetailsList.itemName}</option>
-                                </c:forEach>
-                            </select>
-                                        </div>
-                                    </div>
-                                       
-                                    <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-3">Item Quantity</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="itemQuantity" name="itemQuantity" type="number" placeholder="Item Name"> 
-                                           
+                                             <input class=" form-control" id="materialName" name="materialName" type="text" placeholder="Material Name">
                                         </div>
                                     </div>
                                     
-                                     <%-- <div class="form-group ">
+                                       <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-3">Select of Unit Measure</label>
                                         <div class="col-lg-6">
                                             <select class="form-control m-bot15" id="uom" name="uom">
@@ -101,12 +78,13 @@
                                 </c:forEach>
                             </select>
                                         </div>
-                                    </div> --%>
+                                    </div>
                                     
+                                  
                                     <div class="form-group ">
                                         <label for="lastname" class="control-label col-lg-3">Description</label>
                                         <div class="col-lg-6">
-                                            <textarea rows="2" class=" " id="itemQuantityDesc" name="itemQuantityDesc" form-control" placeholder="Item Description"></textarea>
+                                            <textarea rows="2" class=" " id="materialDesc" name="materialDesc" form-control" placeholder="Item Description"></textarea>
                                             
                                         </div>
                                     </div>
@@ -126,7 +104,13 @@
             <!-- page end-->
         </div>
 </section>
- 
+ <!-- footer -->
+		  <div class="footer">
+			<div class="wthree-copyright">
+			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			</div>
+		  </div>
+  <!-- / footer -->
 </section>
 
 <!--main content end-->

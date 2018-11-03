@@ -91,7 +91,7 @@ tr:nth-child(even) {
 		<div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
-     Item Details
+     Raw Material Details
      <input type="text" id="tableSearch" class="form-control search" placeholder=" Search" style="
     float: right;
     margin-top: 10px;
@@ -111,25 +111,26 @@ tr:nth-child(even) {
         <thead>
           <tr>
             <th data-breakpoints="xs">Sr. No</th>
-            <th>Item Name</th>
-            <th>Item Description</th>
-            <th data-breakpoints="xs">Last Update Date</th>
-            <th>Action</th> 
-           <!--  <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th> -->
+            <th>Raw Material Name</th>
+            <th>Unit</th>
+              <th>Material Description</th>
+            
+           
+             <th>Action</th> 
           </tr>
         </thead>
         <tbody>
            
-           <c:forEach var="itemDetails" items="${itemDetailsList}" varStatus="count">
+           <c:forEach var="getRawMateialDetailsWithUnit" items="${getRawMateialDetailsWithUnitList}" varStatus="count">
            
             <tr>
             <td>${count.index+1}</td>
-            <td>${itemDetails.itemName}</td>
-            <td>${itemDetails.description}</td>
-            <td>${itemDetails.modifiedDate}</td>
-           <td><a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+            <td>${getRawMateialDetailsWithUnit.materialName}</td>
+            <td>${getRawMateialDetailsWithUnit.unitName}</td>
+            <td>${getRawMateialDetailsWithUnit.materialDesc}</td>
+            
+            <td><a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
             <a href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>  
-            <!-- <td>March 30th 1982</td> -->
           </tr>
           
            </c:forEach>

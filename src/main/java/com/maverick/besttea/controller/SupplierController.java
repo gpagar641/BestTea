@@ -32,6 +32,22 @@ public class SupplierController {
 	
 	String message;
 	
+	@RequestMapping(value="/showSupplierList", method=RequestMethod.GET)
+	public ModelAndView showSupplierList(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("suppliers/supplierList");
+		try {
+		List<SupplierDetails> supplierDetailsList=supplierDetailsService.getAllSupplier();
+		model.addObject("supplierDetailsList",supplierDetailsList);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());// TODO: handle exception
+		}
+		
+		return model;
+		
+	}
+	
 	@RequestMapping(value="/insertSupplier", method=RequestMethod.GET)
 	public ModelAndView insertSupplier(HttpServletRequest request)   
 	{
@@ -63,6 +79,22 @@ public class SupplierController {
 		message="Information Save Successfully";
 		return "redirect:/insertSupplier";
 		    
+	}
+	
+	
+	@RequestMapping(value="/showRawMaterialList", method=RequestMethod.GET)
+	public ModelAndView showRawMaterialList(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("suppliers/rawMaterialList");
+		
+		 List<GetRawMateialDetailsWithUnit> getRawMateialDetailsWithUnitList= supplierDetailsService.getListOfRawMaterials();
+	
+	  
+	
+	 model.addObject("getRawMateialDetailsWithUnitList",getRawMateialDetailsWithUnitList);
+		
+	return model;
+		
 	}
 	
 	@RequestMapping(value="/insertRawMaterial", method=RequestMethod.GET)

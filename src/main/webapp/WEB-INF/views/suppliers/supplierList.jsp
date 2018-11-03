@@ -91,7 +91,7 @@ tr:nth-child(even) {
 		<div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
-     Item Details
+     Suppiler Details
      <input type="text" id="tableSearch" class="form-control search" placeholder=" Search" style="
     float: right;
     margin-top: 10px;
@@ -111,25 +111,28 @@ tr:nth-child(even) {
         <thead>
           <tr>
             <th data-breakpoints="xs">Sr. No</th>
-            <th>Item Name</th>
-            <th>Item Description</th>
-            <th data-breakpoints="xs">Last Update Date</th>
-            <th>Action</th> 
-           <!--  <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th> -->
+            <th>Company Name</th>
+            <th>Suppiler Name</th>
+              <th>GST Number</th>
+            <th>Email</th>
+            <th data-breakpoints="xs">Contact No</th>
+           
+             <th>Action</th> 
           </tr>
         </thead>
         <tbody>
            
-           <c:forEach var="itemDetails" items="${itemDetailsList}" varStatus="count">
+           <c:forEach var="supplierDetails" items="${supplierDetailsList}" varStatus="count">
            
             <tr>
             <td>${count.index+1}</td>
-            <td>${itemDetails.itemName}</td>
-            <td>${itemDetails.description}</td>
-            <td>${itemDetails.modifiedDate}</td>
-           <td><a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+            <td>${supplierDetails.companyName}</td>
+            <td>${supplierDetails.supplierName}</td>
+            <td>${supplierDetails.gstNumber}</td>
+             <td>${supplierDetails.email}</td>
+            <td>${supplierDetails.contactNo}</td>
+            <td><a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
             <a href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>  
-            <!-- <td>March 30th 1982</td> -->
           </tr>
           
            </c:forEach>

@@ -45,10 +45,13 @@ public class ItemController {
 	public ModelAndView showPatientLoginPage(HttpServletRequest request)   
 	{
 		ModelAndView model=new ModelAndView("items/items");
-		
-		List<ItemDetails> itemDetailsList=new ArrayList<ItemDetails>();
-		
-		
+		try {
+		List<ItemDetails> itemDetailsList=itemDetailsService.getItemsDetails();
+		model.addObject("itemDetailsList",itemDetailsList);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());// TODO: handle exception
+		}
 		
 		return model;
 		

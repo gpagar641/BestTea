@@ -57,8 +57,12 @@
                                 <a class="fa fa-times" href="javascript:;"></a> -->
                              </span>
                         </header>
-                        <p style="text-align: center; color: green" id="messageAnimation">${message}</p>
-         
+                       <div class="form-group ">
+                        <div class="col-lg-5"></div>
+                         <div class="col-lg-5">
+                        <p style="position: absolute; color: green;" id="messageAnimation">${message}</p>
+         </div>
+         </div>
                         <div class="panel-body">
                             <div class="form">
                                 <form class="cmxform form-horizontal " action="insertSupplierProcess" id="signupForm" method="get" action="" novalidate="novalidate">

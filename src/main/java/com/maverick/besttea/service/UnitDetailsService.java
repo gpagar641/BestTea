@@ -8,4 +8,6 @@ public interface UnitDetailsService {
 
 	List<UnitDetails> getUnitDetailsList();
 	
+	UnitDetails save(UnitDetails unitDetails); 
+	
 }

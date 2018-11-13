@@ -30,7 +30,7 @@ public class UnitDetails {
 	private String unitName;
 	
 	@Column(name="unit_description", length=200)
-	private int unitDescription;
+	private String unitDescription;
 	
 	@Column(name="del_status",length=11)
 	private int delStatus;
@@ -81,12 +81,13 @@ public class UnitDetails {
 		this.unitName = unitName;
 	}
 
-	public int getUnitDescription() {
+	
+	public String getUnitDescription() {
 		return unitDescription;
 	}
 
-	public void setUnitDescription(int unitDescription) {
-		this.unitDescription = unitDescription;
+	public void setUnitDescription(String string) {
+		this.unitDescription = string;
 	}
 
 	public int getDelStatus() {

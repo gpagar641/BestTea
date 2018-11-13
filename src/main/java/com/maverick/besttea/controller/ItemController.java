@@ -50,7 +50,7 @@ public class ItemController {
 		model.addObject("itemDetailsList",itemDetailsList);
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		
 		return model;
@@ -131,7 +131,7 @@ public class ItemController {
 		    
 	}
 	
-	@RequestMapping(value="/	", method=RequestMethod.GET)
+	@RequestMapping(value="/showItemQuantity", method=RequestMethod.GET)
 
 	public ModelAndView showItemQuantity(HttpServletRequest request)   
 	{
@@ -165,5 +165,42 @@ public class ItemController {
 		    
 	}
 	
+	@RequestMapping(value="/insertUnit", method=RequestMethod.GET)
+
+	public ModelAndView insertUnit(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("items/unit");
+		
+		
+		return model;
+		
+	}
+	
+	@RequestMapping(value="/insertUnitProcess", method=RequestMethod.GET)
+
+	public ModelAndView insertUnitProcess(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("items/unit");
+		UnitDetails unitDetails=new UnitDetails();
+		unitDetails.setDelStatus(0);
+		unitDetails.setUnitName(request.getParameter("unitName"));
+		unitDetails.setUnitDescription(request.getParameter("unitDesc"));
+		
+		unitDetailsService.save(unitDetails);
+		return model;
+		
+	}
+	
+	@RequestMapping(value="/getUnits", method=RequestMethod.GET)
+
+	public ModelAndView getUnits(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("items/unit_details");
+		
+		List<UnitDetails> unitDetailsList=unitDetailsService.getUnitDetailsList();
+		model.addObject("unitDetailsList",unitDetailsList);
+		return model;
+		
+	}
 	
 }

@@ -20,12 +20,24 @@ public class UnitDetailsServiceImpl implements UnitDetailsService{
 
 	@Override
 	public List<UnitDetails> getUnitDetailsList() {
-		// TODO Auto-generated method stub
+		
 		List<UnitDetails> unitDetailsList=new ArrayList<UnitDetails>();
 		
 		unitDetailsList=unitDetailsRepository.findByDelStatus(0);
 		
 		return unitDetailsList;
+	}
+
+	@Override
+	public UnitDetails save(UnitDetails unitDetails) {
+		
+		try {
+			unitDetails=unitDetailsRepository.save(unitDetails);
+		} catch (Exception e) {
+			
+		}
+		
+		return unitDetails;
 	}
 
 	

@@ -1,5 +1,8 @@
 package com.maverick.besttea.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +28,7 @@ public class VendorController {
 
 	public ModelAndView showPatientLoginPage(HttpServletRequest request)   
 	{
-		ModelAndView model=new ModelAndView("login/vendor_registration");
+		ModelAndView model=new ModelAndView("vendor/vendor_registration");
 		
 		return model;
 		
@@ -35,7 +38,7 @@ public class VendorController {
 
 	public String vendorRegistrationProcess(HttpServletRequest request,@RequestParam("drivingLicense") MultipartFile drivingLicense)   
 	{
-		ModelAndView model=new ModelAndView("login/vendor_registration");
+		ModelAndView model=new ModelAndView("vendor/vendor_registration");
 		System.out.println("efferf");
 	
 		try {
@@ -74,6 +77,44 @@ public class VendorController {
 		}
 		
 		return "redirect:/showVendorRegistration";
+		
+	}	
+	
+	@RequestMapping(value="/showVendorDetailsById", method=RequestMethod.GET)
+
+	public ModelAndView showVendorDetailsById(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("vendor/view_profile");
+		VendorDetails vendorDetails=new VendorDetails();
+		int vendorId=Integer.parseInt(request.getParameter("vendorId"));
+		
+		try {
+			vendorDetails=vendorDetailsService.getVendorDetailsByVendorId(vendorId);
+			model.addObject("vendorDetails", vendorDetails);
+			model.addObject("path", VpsImageUpload.doctorImages);
+			System.out.println(vendorDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return model;
+		
+	}	
+	
+	@RequestMapping(value="/showAllVendor", method=RequestMethod.GET)
+	public ModelAndView getVendorDetailsById(HttpServletRequest request)   
+	{
+		ModelAndView model=new ModelAndView("vendor/all_vendor");
+		List<VendorDetails> vendorDetailsList=new ArrayList<>();
+		try {
+			vendorDetailsList=vendorDetailsService.getAllVendorDetails();
+			
+			model.addObject("vendorDetailsList",vendorDetailsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return model;
 		
 	}	
 	

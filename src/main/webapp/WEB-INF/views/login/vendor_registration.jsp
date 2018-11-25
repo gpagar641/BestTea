@@ -27,7 +27,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="reg-w3">
 <div class="w3layouts-main">
 	<h2>Register Now</h2>
-		<form action="${pageContext.request.contextPath}/vendorRegistrationProcess"  method="post">
+		<form action="${pageContext.request.contextPath}/vendorRegistrationProcess" enctype="multipart/form-data" method="post">
 			<input type="text" class="ggg" name="name" placeholder="NAME" required="required">
 			<input type="email" class="ggg" name="email" placeholder="E-MAIL" required="required">
 			<input type="text" class="ggg" name="phone" placeholder="PHONE" required="required">
@@ -38,14 +38,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     border: 1px solid #fff;" required="required" ></textarea>
     		<input type="text" class="ggg" name="nickname" placeholder="NICK NAME" required="required">
             <label for="exampleInputFile"  style="color:#fff ; margin: 14px 0px;">Upload Driving License</label>
-            <!-- <input type="file" id="drivingfile" name="drivingfile" style="background: none; margin: 14px 0px; width: 100%;
-    border: 1px solid #fff;" required="required">   -->                              
+            <input type="file" id="drivingfile" name="drivingfile" style="background: none; margin: 14px 0px; width: 100%;
+    border: 1px solid #fff;" required="required">                                
                                        
 			
 			<h4><input type="checkbox" />I agree to the Terms of Service and Privacy Policy</h4>
 			
 				<div class="clearfix"></div>
-				<input type="submit" value="submit" >
+				<input type="submit" value="submit" name="register">
 		</form>
 		<p>Already Registered.<a href="${pageContext.request.contextPath}/showLoginPage">Login</a></p>
 </div>

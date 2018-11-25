@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.maverick.besttea.common.VpsImageUpload;
 import com.maverick.besttea.model.VendorDetails;
 import com.maverick.besttea.service.VendorDetailsService;
 
@@ -30,7 +33,7 @@ public class VendorController {
 	
 	@RequestMapping(value="/vendorRegistrationProcess", method=RequestMethod.POST)
 
-	public String vendorRegistrationProcess(HttpServletRequest request)   
+	public String vendorRegistrationProcess(HttpServletRequest request,@RequestParam("drivingLicense") MultipartFile drivingLicense)   
 	{
 		ModelAndView model=new ModelAndView("login/vendor_registration");
 		System.out.println("efferf");
@@ -51,7 +54,7 @@ public class VendorController {
 		
 			System.out.println(vendorDetails.toString());
 			vendorDetails=vendorDetailsService.insertVendor(vendorDetails);
-			/*try {
+			try {
 				
 			String fileName=drivingLicense.getOriginalFilename();
 			VpsImageUpload vpsImageUpload=new VpsImageUpload();
@@ -61,7 +64,7 @@ public class VendorController {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			*/
+			
 			
 		}
 		catch (Exception e) {

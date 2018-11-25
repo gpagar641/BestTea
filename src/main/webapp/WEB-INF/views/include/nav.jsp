@@ -16,10 +16,10 @@
                         <span>Material</span>
                     </a>
                     <ul class="sub">
-						<li><a href="${pageContext.request.contextPath}/insertRawMaterial">Add Material</a></li>
-						<li><a href="${pageContext.request.contextPath}/insertSupplier">Add Suppliers</a></li>
-                        <li><a href="${pageContext.request.contextPath}/showRawMaterialList">Material Details</a></li>
-                        <li><a href="${pageContext.request.contextPath}/showSupplierList">Supplier Details</a></li>
+						<li><a href="typography.html">Add Material</a></li>
+						<li><a href="glyphicon.html">Add Suppliers</a></li>
+                        <li><a href="grids.html">Material Details</a></li>
+                        <li><a href="grids.html">Supplier Details</a></li>
                     </ul>
                 </li>
                 
@@ -29,10 +29,10 @@
                         <span>Items</span>
                     </a>
                     <ul class="sub">
-						<li><a href="${pageContext.request.contextPath}/showItems">Item Details</a></li>
-                    	<li><a href="${pageContext.request.contextPath}/getUnits">Unit Details</a></li>
-						<li><a href="${pageContext.request.contextPath}/showAddItems">Add Item</a></li>
-						<li><a href="${pageContext.request.contextPath}/insertUnit">Add Unit</a></li>
+                    	<li><a href="typography.html">Item Details</a></li>
+                    	<li><a href="typography.html">Unit Details</a></li>
+						<li><a href="typography.html">Add Item</a></li>
+						<li><a href="glyphicon.html">Add Unit</a></li>
                     </ul>
                 </li>
                

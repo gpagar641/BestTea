@@ -71,6 +71,8 @@ tr:nth-child(even) {
 
 <body>
 
+<c:url var="getRawMaterialWithStockAndPrice"
+		value="/getRawMaterialWithStockAndPrice" />
 
 	<!--header start-->
 
@@ -87,14 +89,14 @@ tr:nth-child(even) {
 	<!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
-	<form class="cmxform form-horizontal " action="insertSupplierMaterialProcess" id="signupForm" method="get" novalidate="novalidate">
+	<form class="cmxform form-horizontal " action="insertSupplierMaterialStock" id="signupForm" method="post" >
 	
  
  
   <div class="form-group has-success">
                                     <label class="col-lg-4 control-label">Select Supplier</label>
                                     <div class="col-lg-4">
-                                         <select id="supplierId" name="supplierId" class="test" required>
+                                         <select id="supplierId" name="supplierId" class="test" required="required">
                                          <option value="" selected disabled="disabled"><---Select Supplier---></option>
  <c:forEach var="supplierDetailsList" items="${supplierDetailsList}">
  <option value="${supplierDetailsList.supplierId}">${supplierDetailsList.supplierName}</option>
@@ -131,14 +133,16 @@ tr:nth-child(even) {
           <tr>
             <th data-breakpoints="xs">Sr. No.</th>
             <th>Material Name</th>
-            <th>Unit Name</th>
-            <th data-breakpoints="xs">Description</th>
-           	<th>Select Material</th>
+            	<th>Existing Quantity</th>
+            <th>Existing Price</th>
+            <th data-breakpoints="xs">Price</th>
+           	<th>New Quantity</th>
+           		<th>Total Quantity</th>
            
           </tr>
         </thead>
         <tbody>
-          <c:forEach var="getRawMateialDetailsWithUnitList" items="${getRawMateialDetailsWithUnitList}">
+         <%--  <c:forEach var="getRawMateialDetailsWithUnitList" items="${getRawMateialDetailsWithUnitList}">
           <tr data-expanded="true">
             <td>${getRawMateialDetailsWithUnitList.rawMaterialId}</td>
             <td>${getRawMateialDetailsWithUnitList.materialName}</td>
@@ -147,14 +151,14 @@ tr:nth-child(even) {
             <td><input type="checkbox" id="selectedMaterial" style="height: 20px;width: 20px;" name="selectedMaterial" value="${getRawMateialDetailsWithUnitList.rawMaterialId}" required> </td>
            
           </tr>
-          </c:forEach>
+          </c:forEach> --%>
         </tbody>
       </table>
     </div>
      
   </div>
   
-   <button class="btn btn-primary" type="submit" >Save</button>
+   <input class="btn btn-primary" type="submit" value="Save"/>
      <button class="btn btn-default" type="button">Cancel</button>
 </div>
 </form>
@@ -197,6 +201,84 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
  
-</script>
+ 
+
+$(document).ready(function() { 
+	$('#supplierId').change(
+			function() {
+	  
+	 // alert($('#supplierId').val());
+	  $('#itemTable tbody tr').remove();
+   
+$
+.getJSON(
+		'${getRawMaterialWithStockAndPrice}',
+		{
+			supplierId : $('#supplierId').val(),
+			 
+			ajax : 'true'
+		},
+		function(data) {
+			
+			 
+			$.each(data,function(key, getRawMaterialWithStockAndPrice) {
+						 
+						var tr = $('<tr></tr>');
+						
+				  		  tr.append($('<td></td>').html(key+1));  
+						tr.append($('<td></td>').html(getRawMaterialWithStockAndPrice.materialName));
+						tr.append($('<td></td>').html(getRawMaterialWithStockAndPrice.totalQty));
+						tr.append($('<td></td>').html(getRawMaterialWithStockAndPrice.newPrice));
+						tr.append($('<td></td>').html('<input required="required" class="form-control num-only" style="width: 50%" id="price'+getRawMaterialWithStockAndPrice.rawMaterialId+'" name="price'+getRawMaterialWithStockAndPrice.rawMaterialId+'" type="text" placeholder="New Price" value="0">'));
+						tr.append($('<td></td>').html('<input required="required" onkeyup=calTotQty('+getRawMaterialWithStockAndPrice.totalQty+','+getRawMaterialWithStockAndPrice.rawMaterialId+') class="form-control num-only" style="width: 50%" id="qty'+getRawMaterialWithStockAndPrice.rawMaterialId+'" name="qty'+getRawMaterialWithStockAndPrice.rawMaterialId+'" type="number" placeholder="New Quantity" value="0">'));
+						tr.append($('<td></td>').html('<input required="required" readonly class="form-control num-only" style="width: 50%" id="totQty'+getRawMaterialWithStockAndPrice.rawMaterialId+'" name="totQty'+getRawMaterialWithStockAndPrice.rawMaterialId+'" type="text"  value="'+getRawMaterialWithStockAndPrice.totalQty+'">'));
+					//	tr.append($('<td></td>').html('<span id="totQty'+getRawMaterialWithStockAndPrice.rawMaterialId+'">'+getRawMaterialWithStockAndPrice.totalQty+'</span>'));
+						 
+						$('#itemTable tbody').append(tr);
+					})	
+					});  
+	  });
+});
+
+function calTotQty(extQty,id){
+	 
+	var qty=parseInt(extQty)+parseInt($('#qty'+id).val());
+	$("#totQty"+id).val(qty);
+/* 	var totAmt=$("#totAmount"+tableId).val();
+	totAmt=totAmt-(totAmt*$(id).val()/100);
+	$("#totQty"+tableId).text(totAmt);
+	$("#payableAmount"+tableId).val(totAmt); */
+	//alert(totAmt);
+}
+ </script>
+ <script type="text/javascript">
+	 
+	 jQuery.fn.ForceNumericOnly =
+		 function()
+		 {
+		     return this.each(function()
+		     {
+		         $(this).keydown(function(e)
+		         {
+		             var key = e.charCode || e.keyCode || 0;
+		             // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+		             // home, end, period, and numpad decimal
+		             return (
+		                 key == 8 || 
+		                 key == 9 ||
+		                 key == 13 ||
+		                 key == 46 ||
+		                // key == 110 ||
+		                // key == 190 ||
+		                 (key >= 35 && key <= 40) ||
+		                 (key >= 48 && key <= 57) ||
+		                 (key >= 96 && key <= 105));
+		         });
+		     });
+		 };
+		 $(".num-only").ForceNumericOnly();
+		 
+	 </script>
+
 </body>
 </html>

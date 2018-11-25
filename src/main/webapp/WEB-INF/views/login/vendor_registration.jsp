@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     border: 1px solid #fff;" required="required" ></textarea>
     		<input type="text" class="ggg" name="nickname" placeholder="NICK NAME" required="required">
             <label for="exampleInputFile"  style="color:#fff ; margin: 14px 0px;">Upload Driving License</label>
-            <input type="file" id="drivingfile" name="drivingfile" style="background: none; margin: 14px 0px; width: 100%;
+            <input type="file" id="drivingLicense" name="drivingLicense" style="background: none; margin: 14px 0px; width: 100%;
     border: 1px solid #fff;" required="required">                                
                                        
 			

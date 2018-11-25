@@ -19,7 +19,7 @@ public class VpsImageUpload {
 	//public static final String report="reports/";
 	//public static final String report="/usr/local/tomcat8/apache-tomcat-8.5.34/apache-tomcat-8.5.34/webapps/reports/";
 	
-	public static final String doctorImages="D://sts-bundle//sts-3.9.3.RELEASE//image//";
+	public static final String doctorImages="F:\\Ganesh ShareFolder\\";
 //	public static final String labImages="/usr/local/tomcat8/apache-tomcat-8.5.34/webapps/images/lab/";
 //	public static final String pharmacy="/usr/local/tomcat8/apache-tomcat-8.5.34/webapps/images/pharmacy/";
 	

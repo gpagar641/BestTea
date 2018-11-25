@@ -7,16 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.maverick.besttea.model.GetRawMateialDetailsWithUnit;
+import com.maverick.besttea.model.GetRawMaterialWithStockAndPrice;
 import com.maverick.besttea.model.RawMaterialDetails;
 import com.maverick.besttea.model.SupplierDetails;
 import com.maverick.besttea.model.SupplierMaterialDetails;
 import com.maverick.besttea.model.UnitDetails;
+import com.maverick.besttea.repository.GetRawMaterialWithStockAndPriceRepository;
 import com.maverick.besttea.service.SupplierDetailsService;
 import com.maverick.besttea.service.UnitDetailsService;
 
@@ -28,7 +30,8 @@ public class SupplierController {
 	
 	@Autowired
 	SupplierDetailsService supplierDetailsService;
-	
+	@Autowired
+	GetRawMaterialWithStockAndPriceRepository getRawMaterialWithStockAndPriceRepository;
 	
 	String message;
 	
@@ -186,5 +189,50 @@ public class SupplierController {
 	}	
 	
 	
+	@RequestMapping(value="/showInsertRawMaterialStock", method=RequestMethod.GET)
+	public ModelAndView showInsertRawMaterialStock(HttpServletRequest request)   
+	{
+	 ModelAndView model=new ModelAndView("suppliers/enterRawMaterialStock");
+		
+ 
+	 List<SupplierDetails> supplierDetailsList=supplierDetailsService.getAllSupplier();
+	 
+	 model.addObject("supplierDetailsList",supplierDetailsList);
+	 
+		
+	return model;
+		
+	}	
 	
+ @RequestMapping(value="/getRawMaterialWithStockAndPrice", method=RequestMethod.GET)
+	public @ResponseBody List<GetRawMaterialWithStockAndPrice> getRawMaterialWithStockAndPrice(HttpServletRequest request)   
+	{
+	 List<GetRawMaterialWithStockAndPrice> getRawMaterialWithStockAndPriceList=new ArrayList<GetRawMaterialWithStockAndPrice>();
+	 int supplierId=Integer.parseInt(request.getParameter("supplierId"));
+	 try {
+	  getRawMaterialWithStockAndPriceList=getRawMaterialWithStockAndPriceRepository.getRawMaterialWithStockAndPrice(supplierId);
+	 }
+	 catch (Exception e) {
+		System.out.println(e.getMessage());// TODO: handle exception
+	}
+	 
+	return getRawMaterialWithStockAndPriceList;
+		
+	}	
+	 
+ 
+ @RequestMapping(value="/insertSupplierMaterialStock", method=RequestMethod.POST)
+	public ModelAndView insertSupplierMaterialStock(HttpServletRequest request)   
+	{
+	 ModelAndView model=new ModelAndView("suppliers/enterRawMaterialStock");
+		
+
+	 List<SupplierDetails> supplierDetailsList=supplierDetailsService.getAllSupplier();
+	 
+	 model.addObject("supplierDetailsList",supplierDetailsList);
+	 
+		
+	return model;
+		
+	}	
 }

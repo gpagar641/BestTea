@@ -44,13 +44,20 @@ public class VendorController {
 		try {
 			
 			VendorDetails vendorDetails=new VendorDetails();
+			try {
+			
+				vendorDetails.setVendorId(Integer.parseInt(request.getParameter("vendorId")));
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			vendorDetails.setName(request.getParameter("name"));
 			vendorDetails.setEmail(request.getParameter("email"));
 			vendorDetails.setMobile(request.getParameter("phone"));
 			vendorDetails.setPassword(request.getParameter("password"));
 			vendorDetails.setAddress(request.getParameter("address"));
 			vendorDetails.setNickName(request.getParameter("nickname"));
-			vendorDetails.setDrivingLicPic(request.getParameter("drivingfile"));
+			vendorDetails.setDrivingLicPic(request.getParameter("drivingLicense"));
 			vendorDetails.setProfilePic("");
 			vendorDetails.setDelStatus(0);
 			vendorDetails.setOtherDocPic("");
